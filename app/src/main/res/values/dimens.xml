@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <!-- titleBar -->
+    <dimen name="title_bar_height">127pt</dimen>
+    <dimen name="title_bar_back_width">57pt</dimen>
+    <dimen name="title_bar_back_height">80pt</dimen>
+    <dimen name="title_bar_padding">37pt</dimen>
+
+    <!-- textSize -->
+    <dimen name="text_size_52">52pt</dimen>
+
+    <!-- padding -->
+    <dimen name="padding_10">10pt</dimen>
+</resources>

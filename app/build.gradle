@@ -86,7 +86,11 @@ dependencies {
     //日志打印库
     implementation 'com.orhanobut:logger:1.15'
     //动态权限
-    implementation 'pub.devrel:easypermissions:2.0.0'
+    implementation 'pub.devrel:easypermissions:3.0.0'
     //MD全能对话框
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    //屏幕适配
+    implementation 'com.blankj:utilcodex:1.28.4'
+    //滑动返回
+    implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
 }
