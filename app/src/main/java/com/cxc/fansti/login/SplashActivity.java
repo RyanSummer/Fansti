@@ -40,21 +40,7 @@ public class SplashActivity extends BaseActivity {
         closeSwipeBack();
 
         mMainHandler = new InnerHandler(this);
-        mMainHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //判断是否已登录
-                boolean isLogin = PreferencesUtil.getBoolean(SplashActivity.this, Constants.LOGIN_STATE,false);
-                Log.d(TAG,"isLogin:"+isLogin);
-                if (isLogin){
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                } else {
-                    startActivity(new Intent(SplashActivity.this,LoginActivity.class));
-                }
-
-                finish();
-            }
-        },delayTime);
+        mMainHandler.sendEmptyMessageAtTime(200,delayTime);
     }
 
     @Override
@@ -81,12 +67,23 @@ public class SplashActivity extends BaseActivity {
 
         @Override
         public void handleMessage(Message msg) {
-            if (mWeakReference == null || mWeakReference.get() == null) {
-                return;
-            }
-            SplashActivity activity = mWeakReference.get();
-            if (activity == null) {
-                return;
+            switch (msg.what){
+                case 200:
+                    SplashActivity activity = mWeakReference.get();
+                    //判断是否已登录
+                    boolean isLogin = PreferencesUtil.getBoolean(activity, Constants.LOGIN_STATE,false);
+                    Log.d(TAG,"isLogin:"+isLogin);
+                    if (isLogin){
+                        activity.startActivity(new Intent(activity, MainActivity.class));
+                    } else {
+                        activity.startActivity(new Intent(activity,LoginActivity.class));
+                    }
+
+                    activity.finish();
+                    break;
+
+                default:
+                    break;
             }
         }
     }
